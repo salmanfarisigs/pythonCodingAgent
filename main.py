@@ -3,7 +3,7 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-
+from functions.get_files_info import get_files_info
 
 def main():
 	load_dotenv()
@@ -20,7 +20,7 @@ def main():
 		verbose_flag = True
 
 	prompt = sys.argv[1]
-
+	print("argv:", sys.argv)
 	messages = [
 		types.Content(role="user", parts=[types.Part(text=prompt)])
 		]
@@ -40,3 +40,4 @@ def main():
 		print(f"Prompt Tokens: {response.usage_metadata.prompt_token_count}")
 		print(f"Response Tokens: {response.usage_metadata.candidates_token_count}")
 main()
+
